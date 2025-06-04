@@ -52,29 +52,30 @@
     <!-- Chat messages -->
     <section class="flex-1 overflow-y-auto mb-4">
         <!-- Loop through messages -->
-        {% for message in chat %}
-            {% if message.class == 'GPT 3.5' %}
-                <!-- Bot message -->
-                <div class="flex justify-start items-end" data-read-aloud="{{ message.text }}">
-                    <div class="flex items-end mr-2">
-                    <div class="h-8 w-8 rounded-full bg-gray-300 flex items-center justify-center text-sm text-white">B</div>
-                    </div>
-                    <div class="max-w-xl bg-blue-100 rounded-xl p-4">
-                        <p class="text-gray-800"><strong>Banko Bot:</strong> {{ message.text }}</p>
-                    </div>
-                </div>
-            {% elif message.class == 'User' %}
-                <!-- User message -->
-                <div class="flex justify-end items-end">
-                    <div class="max-w-xl bg-green-100 rounded-xl p-4">
-                        <p class="text-gray-800"><strong>You:</strong> {{ message.text }}</p>
-                    </div>
-                    <div class="flex items-end ml-2">
-                    <div class="h-8 w-8 rounded-full bg-gray-500 flex items-center justify-center text-sm text-white">U</div>
-                    </div>
-                </div>
-            {% endif %}
-        {% endfor %}
+       {% for message in chat %}
+    {% if message.class != 'User' %}
+        <!-- Bot message -->
+        <div class="flex justify-start items-end" data-read-aloud="{{ message.text }}">
+            <div class="flex items-end mr-2">
+                <div class="h-8 w-8 rounded-full bg-gray-300 flex items-center justify-center text-sm text-white">B</div>
+            </div>
+            <div class="max-w-xl bg-blue-100 rounded-xl p-4">
+                <p class="text-gray-800"><strong>Banko Bot:</strong> {{ message.text }}</p>
+            </div>
+        </div>
+    {% else %}
+        <!-- User message -->
+        <div class="flex justify-end items-end">
+            <div class="max-w-xl bg-green-100 rounded-xl p-4">
+                <p class="text-gray-800"><strong>You:</strong> {{ message.text }}</p>
+            </div>
+            <div class="flex items-end ml-2">
+                <div class="h-8 w-8 rounded-full bg-gray-500 flex items-center justify-center text-sm text-white">U</div>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}
+
     </section>
     
     <!-- Message input -->
