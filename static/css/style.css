@@ -13,7 +13,7 @@
   .chat-message {
     display: inline-flex; /* Allows internal flexbox alignments */
     align-items: center;
-    padding: 8px 16px;
+    padding: 8px 15px;
     border-radius: 16px;
     margin: 4px;
   }
